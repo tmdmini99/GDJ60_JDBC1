@@ -9,6 +9,36 @@ import com.iu.main.util.DBConnection;
 
 public class EmployeeDAO {
 
+	
+	public ArrayList<Double> getAvg() throws Exception{
+		Connection connection = DBConnection.getConnection();
+		
+		String sql="SELECT AVG(SALARY), SUM(SALARY) FROM EMPLOYEES";
+		
+		PreparedStatement st= connection.prepareStatement(sql);
+		
+		
+		ResultSet rs = st.executeQuery();
+		
+		
+		rs.next();
+		
+		System.out.println(rs.getDouble(1)); //index 번호로 꺼내기 가능
+		System.out.println(rs.getInt(2));
+		
+		
+		ArrayList<Double> ar = new ArrayList<Double>();
+		ar.add(rs.getDouble(1));
+		ar.add((double) rs.getInt(2));
+		DBConnection.disConnect(rs, st, connection);
+		
+		return ar;
+	}
+	
+	
+	
+	
+	
 	public int updateData(EmployeeDTO dto) throws Exception{
 		Connection connection =DBConnection.getConnection();
 		String sql = "UPDATE EMPLOYEES SET FIRST_NAME = ?, LAST_NAME = ? WHERE EMPLOYEE_ID = ?";
@@ -39,7 +69,7 @@ public class EmployeeDAO {
 		Connection connection =DBConnection.getConnection();
 		String sql = "INSERT INTO EMPLOYEES(EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,"
 				+ "HIRE_DATE,JOB_ID,SALARY,COMMISSION_PCT,MANAGER_ID,DEPARTMENT_ID)"
-						+" VALUES(EMPLOYEES_SEQ.NEXTVAL,?,?,?,?,sysDate,?,?,?,?,?)";
+						+" VALUES(EMPLOYEES_SEQ.NEXTVAL,?,?,?,?,sysdate,?,?,?,?,?)";
 		PreparedStatement st= connection.prepareStatement(sql);
 		
 		st.setString(1, dto.getFirst_name());
