@@ -15,17 +15,10 @@ public class JDBCMain {
 	public static void main(String[] args) {
 		System.out.println("start");
 		
-		DepartmentControllar dc = new DepartmentControllar();
-		LocationControllar lc = new LocationControllar();
-		EmployeeControllar ec = new EmployeeControllar();
-		
-		DepartmentDAO dao = new DepartmentDAO();
-		LocationDAO dao1 = new LocationDAO();
-		EmployeeDAO d = new EmployeeDAO();
-		ArrayList<Double>ar = new ArrayList<Double>();
+		FrontController controller = new FrontController();
 		try {
+			controller.start();
 			
-			ec.start();
 			//
 			
 		
