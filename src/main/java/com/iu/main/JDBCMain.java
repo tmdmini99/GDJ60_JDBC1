@@ -25,9 +25,9 @@ public class JDBCMain {
 		ArrayList<Double>ar = new ArrayList<Double>();
 		try {
 			
-			//ec.start();
-			ar = d.getAvg();
-			System.out.println(ar);
+			ec.start();
+			//
+			
 		
 
 		} catch (Exception e) {

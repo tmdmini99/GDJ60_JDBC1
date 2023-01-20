@@ -43,6 +43,8 @@ public class EmployeeInput {
 		dto.setEmail(sc.next());
 		System.out.println("추가할 폰넘버");
 		dto.setPhone_number(sc.next());
+		System.out.println("추가할 날짜");
+		dto.setHire_date(sc.next());
 		System.out.println("추가할 직업");
 		dto.setJob_id(sc.next());
 		System.out.println("추가할 월급");
